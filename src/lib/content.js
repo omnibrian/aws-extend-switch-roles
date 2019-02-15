@@ -1,9 +1,6 @@
 const autoAssumeLastRole = new AutoAssumeLastRole();
 
 function extendIAMFormList() {
-  // Fix z-index of username menu
-  elById('usernameMenuContent').style.zIndex = '5';
-
   var csrf, list = elById('awsc-username-menu-recent-roles');
   if (list) {
     var firstForm = list.querySelector('#awsc-recent-role-0 form');
@@ -12,6 +9,10 @@ function extendIAMFormList() {
     list = generateEmptyRoleList();
     csrf = '';
   }
+
+  list.style.paddingRight = '1ex';
+  list.style.overflowY = 'auto';
+  list.style.maxHeight = '50vh';
 
   const lastRoleKey = autoAssumeLastRole.createKey();
 
@@ -126,7 +127,7 @@ function loadProfiles(profile, list, csrf, hidesHistory, hidesAccountId) {
 
     var color = item.color || 'aaaaaa';
     if (!item.image) {
-        list.insertAdjacentHTML('beforeend', Sanitizer.escapeHTML`<li>
+        list.insertAdjacentHTML('beforeend', Sanitizer.escapeHTML`<li style="overflow: visible;">
          <form action="https://signin.aws.amazon.com/switchrole" method="POST" target="_top" data-aesr-profile="${item.profile}">
           <input type="hidden" name="action" value="switchFromBasis">
           <input type="hidden" name="src" value="nav">
@@ -141,7 +142,7 @@ function loadProfiles(profile, list, csrf, hidesHistory, hidesAccountId) {
                 title="${item.role_name}@${item.aws_account_id}" style="white-space:pre"></form>
         </li>`);
     } else {
-        list.insertAdjacentHTML('beforeend', Sanitizer.escapeHTML`<li>
+        list.insertAdjacentHTML('beforeend', Sanitizer.escapeHTML`<li style="overflow: visible;">
          <form action="https://signin.aws.amazon.com/switchrole" method="POST" target="_top" data-aesr-profile="${item.profile}">
           <input type="hidden" name="action" value="switchFromBasis">
           <input type="hidden" name="src" value="nav">
