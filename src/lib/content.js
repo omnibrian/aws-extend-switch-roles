@@ -1,6 +1,9 @@
 const autoAssumeLastRole = new AutoAssumeLastRole();
 
 function extendIAMFormList() {
+  // Fix z-index of username menu
+  elById('usernameMenuContent').style.zIndex = '5';
+
   var csrf, list = elById('awsc-username-menu-recent-roles');
   if (list) {
     var firstForm = list.querySelector('#awsc-recent-role-0 form');
@@ -68,7 +71,7 @@ function replaceRedirectURI(form, profile) {
       }
     }
     form.redirect_uri.value = encodeURIComponent(redirectUri);
-  }  
+  }
 }
 
 function hookBeforeSwitch(form, profile) {
@@ -248,4 +251,3 @@ function needsInvertForeColorByBack(color) {
 
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255 < 0.5;
 }
-
