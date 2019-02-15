@@ -14,6 +14,8 @@ function extendIAMFormList() {
   list.style.overflowY = 'auto';
   list.style.maxHeight = '50vh';
 
+  elById('nav-resourceGroupsMenu').style.display = 'none';
+
   const lastRoleKey = autoAssumeLastRole.createKey();
 
   chrome.storage.sync.get([
