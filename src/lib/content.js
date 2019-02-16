@@ -16,6 +16,30 @@ function extendIAMFormList() {
 
   elById('nav-resourceGroupsMenu').style.display = 'none';
 
+  // Add SSM Parameter Store direct shortcut
+  shortcutList = elById('nav-shortcutBar');
+  shortcutList.insertAdjacentHTML('beforebegin', Sanitizer.escapeHTML`
+    <ul id="nav-shortcutBar">
+      <li data-service-id="ssm" data-service-href="https://console.aws.amazon.com/systems-manager/parameters" class="service-link service-link-ssm nav-shortcut nav-elt">
+        <a target="_top" href="https://console.aws.amazon.com/systems-manager/parameters" style="border: none;">
+          <span class="service-icon-wrapper">
+            <span class="service-icon service-icon-navbar service-icon-size-med service-icon-svc-ssm" style="background-position: -2432px -24px">
+              &nbsp;
+            </span>
+            <span class="service-icon service-icon-menu service-icon-size-lg service-icon-svc-ssm" style="background-position: -2432px 0px">
+              &nbsp;
+            </span>
+          </span>
+          <span class="service-label">
+            Parameter Store
+          </span>
+        </a>
+        <div class="nav-menu-separator">
+          &nbsp;
+        </div>
+      </li>
+    </ul>`);
+
   const lastRoleKey = autoAssumeLastRole.createKey();
 
   chrome.storage.sync.get([
