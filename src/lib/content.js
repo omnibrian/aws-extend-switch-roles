@@ -14,6 +14,8 @@ function extendIAMFormList() {
   list.style.overflowY = 'auto';
   list.style.maxHeight = '50vh';
 
+  elById('h').style.padding = '0';
+
   elById('nav-resourceGroupsMenu').style.display = 'none';
 
   // Add SSM Parameter Store direct shortcut
