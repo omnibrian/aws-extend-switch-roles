@@ -16,12 +16,18 @@ function extendIAMFormList() {
 
   elById('h').style.padding = '0';
 
+  navLogo = elById('nav-logo');
+  navLogo.style.marginLeft = '10px';
+  navLogo.style.marginRight = '10px';
+
+  elById('nav-menu-right').style.padding = '0';
+
   elById('nav-resourceGroupsMenu').style.display = 'none';
 
   // Add SSM Parameter Store direct shortcut
   shortcutList = elById('nav-shortcutBar');
   shortcutList.insertAdjacentHTML('beforebegin', Sanitizer.escapeHTML`
-    <ul id="nav-shortcutBar">
+    <ul id="nav-shortcutBar" style="padding: 5px 0px;">
       <li data-service-id="ssm" data-service-href="https://console.aws.amazon.com/systems-manager/parameters" class="service-link service-link-ssm nav-shortcut nav-elt">
         <a target="_top" href="https://console.aws.amazon.com/systems-manager/parameters" style="border: none;">
           <span class="service-icon-wrapper">
@@ -41,6 +47,8 @@ function extendIAMFormList() {
         </div>
       </li>
     </ul>`);
+
+  shortcutList.style.padding = '5px 0px';
 
   const lastRoleKey = autoAssumeLastRole.createKey();
 
